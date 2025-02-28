@@ -9,6 +9,7 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { formBuilderPlugin } from '@payloadcms/plugin-form-builder'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,6 +35,39 @@ export default buildConfig({
   sharp,
   plugins: [
     payloadCloudPlugin(),
+    formBuilderPlugin({
+      formOverrides: {
+        fields: ({ defaultFields }) => {
+          return [
+            ...defaultFields,
+            {
+              name: 'hasAttachment',
+              type: 'checkbox',
+            },
+            {
+              name: 'hasAttachmentLabel',
+              type: 'text',
+            },
+          ]
+        },
+      },
+      formSubmissionOverrides: {
+        fields: ({ defaultFields }) => {
+          return [
+            ...defaultFields,
+            {
+              name: 'file',
+              type: 'upload',
+              relationTo: 'media',
+              admin: {
+                allowCreate: true,
+                allowEdit: true,
+              },
+            },
+          ]
+        },
+      },
+    }),
     // storage-adapter-placeholder
   ],
 })
