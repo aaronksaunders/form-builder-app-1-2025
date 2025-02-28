@@ -1,6 +1,9 @@
-# Form Builder Application
+# Payload CMS Form Builder Plugin Application
 
-A web application built with PayloadCMS and Next.js that allows users to create, manage, and submit forms with file attachments.
+A web application built with PayloadCMS with the Payload Form Builder Plugin and Next.js that allows users to create, manage, and submit forms with file attachments.
+
+## VIDEO
+- https://youtu.be/dEXJyOnHwgY?si=Tvv_b30tI0aaSEre
 
 ## Overview
 
